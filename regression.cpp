@@ -5,14 +5,21 @@
 int Regression::size() const { return N_; }
 
 void Regression::add(double x, double y) {
-  ++N_;
-  sum_x_ += x;
-  sum_y_ += y;
-  sum_xy_ += x * y;
-  sum_x2_ += x * x;
+points_.push_back({x,y});
 }
 
 Result Regression::fit() const {
+  double sum_x{};
+  double sum_y{};
+  double sum_xy{};
+  double sum_x2{};
+
+  for (auto const& p : points_) {
+    sum_x += p.x;
+    sum_y += p.y;
+    sum_xy += p.x * p.y;
+    sum_x2 += p.x * p.x;
+  }
   if (N_ < 2) {
     throw std::runtime_error{"Not enough points to run a fit"};
   }
