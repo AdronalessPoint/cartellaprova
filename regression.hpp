@@ -14,13 +14,7 @@ class Regression {
     double y;
   };
   std::vector<Point> points_{};
-  int N{};
-  int N_{};
-  double sum_x_{};
-  double sum_y_{};
-  double sum_xy_{};
-  double sum_x2_{};
-
+  
  public:
   int size() const;
   void add(double x, double y);
