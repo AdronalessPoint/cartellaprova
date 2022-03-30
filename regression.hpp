@@ -23,6 +23,8 @@ class Regression {
   int size() const;
   void add(double x, double y);
   Result fit() const;
+
+  
 };  
 Result fit(Regression const &reg);
 
