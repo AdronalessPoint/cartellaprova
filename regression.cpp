@@ -2,10 +2,10 @@
 
 #include <stdexcept>
 
-int Regression::size() const { return N_; }
+int Regression::size() const { return points_.size(); }
 
-void Regression::add(double x, double y) {
-points_.push_back({x,y});
+void Regression::add(double exe, double eps) {
+points_.push_back({ exe, eps});
 }
 
 Result Regression::fit() const {
@@ -20,17 +20,17 @@ Result Regression::fit() const {
     sum_xy += p.x * p.y;
     sum_x2 += p.x * p.x;
   }
-  if (N_ < 2) {
+  if (points_.size() < 2) {
     throw std::runtime_error{"Not enough points to run a fit"};
   }
 
-  double const d = N_ * sum_x2_ - sum_x_ * sum_x_;
+  double const d = points_.size() * sum_x2 - sum_x * sum_x;
   if (d == 0.) {
     throw std::runtime_error{"Trying to fit a vertical line"};
   }
 
-  double const a = (sum_y_ * sum_x2_ - sum_x_ * sum_xy_) / d;
-  double const b = (N_ * sum_xy_ - sum_x_ * sum_y_) / d;
+  double const a = (sum_y * sum_x2 - sum_x * sum_xy) / d;
+  double const b = (points_.size() * sum_xy - sum_x * sum_y) / d;
 
   return {a, b};
 }

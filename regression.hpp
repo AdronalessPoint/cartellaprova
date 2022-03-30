@@ -5,15 +5,17 @@
 #ifndef REGRESSION_HPP
 #define REGRESSION_HPP
 #include <vector>
-struct Result {
 
+struct Result {
   double A;
   double B;
+
 
 };
 //
 class Regression {
-     struct Point {
+     struct Point { //struttura point dentro a regression 
+     //(permette di creare punti ma i metodi di regression non hanno accesso a x e y) (nested class)
     double x;
     double y;
   };
@@ -21,7 +23,7 @@ class Regression {
   
  public:
   int size() const;
-  void add(double x, double y);
+  void add(double exe, double eps);
   Result fit() const;
 
   
