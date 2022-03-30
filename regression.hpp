@@ -26,8 +26,6 @@ class Regression {
   void add(double exe, double eps);
   Result fit() const;
 
-  /////
-  //
 };  
 Result fit(Regression const &reg);
 
