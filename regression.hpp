@@ -1,6 +1,7 @@
 //ehi
 
 
+
 #ifndef REGRESSION_HPP
 #define REGRESSION_HPP
 #include <vector>
@@ -22,8 +23,7 @@ class Regression {
   int size() const;
   void add(double x, double y);
   Result fit() const;
-};
-
+};  
 Result fit(Regression const &reg);
 
 #endif
